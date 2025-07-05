@@ -1,61 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta http-equiv="refresh" content="4; URL=uithemez.com/i/webfolio/webfolio/home-modern-studio.html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preparing Your Experience</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+    
+    :root {
+      --primary: #ff4d4d;
+      --secondary: #ff1a1a;
+      --bg: #0a0a0a;
+    }
+    
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #000 0%, #b00 100%);
-      color: #fff;
-      font-family: "Poppins", sans-serif;
+      background: var(--bg);
+      color: white;
+      font-family: 'Montserrat', sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+      perspective: 1000px;
+    }
+    
+    .container {
       text-align: center;
+      transform-style: preserve-3d;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .loader {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 40px;
+    }
+    
+    .loader-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 5px solid transparent;
+      border-top-color: var(--primary);
+      animation: spin 1.5s linear infinite;
+    }
+    
+    .loader-ring:nth-child(2) {
+      border-top-color: var(--secondary);
+      animation-delay: 0.3s;
+      width: 90%;
+      height: 90%;
+      top: 5%;
+      left: 5%;
+    }
+    
+    .loader-ring:nth-child(3) {
+      border-top-color: white;
+      animation-delay: 0.6s;
+      width: 80%;
+      height: 80%;
+      top: 10%;
+      left: 10%;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff, var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .progress-text {
+      font-size: 1.2rem;
+      margin-top: 30px;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+    
+    .progress-bar {
+      width: 300px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 20px auto;
+      border-radius: 10px;
       overflow: hidden;
     }
-    .loader {
-      border: 8px solid rgba(255, 255, 255, 0.1);
-      border-top: 8px solid #fff;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      animation: spin 1.2s linear infinite;
-      margin-bottom: 30px;
+    
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      animation: fillProgress 3s ease-out forwards;
     }
+    
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.3em;
-      letter-spacing: 1px;
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateY(0deg); }
+      50% { transform: translateY(-20px) rotateY(5deg); }
     }
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 2em auto;
+    
+    @keyframes fillProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
     }
-    a {
-      color: #fff;
-      text-decoration: underline;
-      font-weight: 500;
-      transition: color 0.3s ease;
+    
+    /* Futuristic pulse effect */
+    .pulse {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,77,77,0.8) 0%, rgba(255,77,77,0) 70%);
+      border-radius: 50%;
+      opacity: 0;
+      animation: pulse 2s ease-out infinite;
+      z-index: -1;
     }
-    a:hover {
-      color: #ff5555;
+    
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .progress-bar { width: 200px; }
     }
   </style>
 </head>
 <body>
-  <div class="loader"></div>
-  <h1>Redirecting...</h1>
-  <p>Hold tight! You will be redirected shortly. If not, <a href="../uithemez.com/i/webfolio/webfolio/home-main.html">click here</a>.</p>
+  <div class="pulse"></div>
+  <div class="pulse" style="animation-delay: 0.5s"></div>
+  
+  <div class="container">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+    
+    <h1>Initializing Experience</h1>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <p class="progress-text">Loading premium content...</p>
+  </div>
+
+  <script>
+    // Add particle effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const colors = ['rgba(255, 77, 77, 0.5)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 26, 26, 0.5)'];
+      
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.style.position = 'absolute';
+        particle.style.width = Math.random() * 5 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.borderRadius = '50%';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.top = Math.random() * 100 + 'vh';
+        particle.style.opacity = '0';
+        
+        document.body.appendChild(particle);
+        
+        const animation = particle.animate([
+          { transform: 'translateY(0)', opacity: 0 },
+          { transform: 'translateY(-100px)', opacity: 0.8 },
+          { transform: 'translateY(-200px)', opacity: 0 }
+        ], {
+          duration: Math.random() * 3000 + 2000,
+          easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+        });
+        
+        animation.onfinish = () => {
+          particle.remove();
+          createParticle();
+        };
+      }
+      
+      // Create initial particles
+      for (let i = 0; i < 30; i++) {
+        createParticle();
+      }
+    });
+  </script>
 </body>
 </html>
